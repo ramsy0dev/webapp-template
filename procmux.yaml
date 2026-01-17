@@ -1,0 +1,44 @@
+layout:
+  hide_help: false
+  hide_process_description_panel: false
+  processes_list_width: 30
+  sort_process_list_alpha: true
+style:
+  color_level: 'truecolors'
+  show_borders: true
+keybinding:
+  quit:
+    - q
+  start:
+    - s
+  stop:
+    - x
+shell_cmd:
+  - '/bin/bash'
+  - '-c'
+
+log_file: /tmp/webapp.log
+enable_mouse: true
+
+procs:
+  "backend":
+    shell: "poetry run uvicorn backend.main:api --reload"
+    cwd: "backend"  # path to your backend folder if not project root
+    autostart: true
+    description: "Start FastAPI backend"
+
+  "frontend":
+    shell: "npm run dev"
+    cwd: "frontend"  # path to your React frontend folder
+    autostart: true
+    description: "Start React frontend"
+  
+  "Build docs":
+    shell: "poetry run python scripts/build_backend_docs.py build"
+    autostart: false
+    description: "Build the backend docs"
+
+  "Serve docs":
+    shell: "poetry run python scripts/build_backend_docs.py serve --port 9000"
+    autostart: false
+    description: "Servethe backend docs"
