@@ -22,8 +22,9 @@ enable_mouse: true
 
 procs:
   "backend":
-    shell: "poetry run uvicorn backend.main:api --reload"
+    shell: "poetry run uvicorn backend.api:api --reload --log-config ./uvicorn.ini"
     cwd: "backend"  # path to your backend folder if not project root
+  
     autostart: true
     description: "Start FastAPI backend"
 
