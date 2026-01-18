@@ -65,7 +65,7 @@ def build_docs(docs_path) -> None:
 
     if "sphinx-build not found" in stderr:
         log.error(
-            "`sphinx-build`[bold white] is not installed. Installing..."
+            "`sphinx-build` is not installed. Installing..."
         )
 
         install_libs_packages()  # May exit due to errors while installing
@@ -83,7 +83,7 @@ def build() -> None:
         build_docs(docs_path=docs_path)
 
     log.info(
-        f"Docs built in: [bold yellow]'{docs_path}/_static'"
+        f"Docs built in: '{docs_path}/_static'"
     )
 
 
