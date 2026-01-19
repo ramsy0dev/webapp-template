@@ -31,4 +31,3 @@ file_handler.setFormatter(stdout_formatter)
 
 logger.addHandler(stdout_handler)
 logger.addHandler(file_handler)
-
