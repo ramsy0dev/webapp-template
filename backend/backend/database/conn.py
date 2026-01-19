@@ -5,11 +5,10 @@ This file contains a class for handling connections to the database.
 file:backend/backend/database/conn.py
 """
 
-from urllib.parse import quote
-
 import sqlalchemy
-from sqlalchemy_utils import database_exists
 
+from urllib.parse import quote
+from sqlalchemy_utils import database_exists
 
 class Database:
     def __init__(
@@ -138,4 +137,3 @@ class Database:
             database_uri += "?" + "&".join(params)
 
         return database_uri
-

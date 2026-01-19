@@ -17,6 +17,8 @@ from backend.backend.database.conn import Database
 # Tables
 from backend.backend.database.tables import *
 
+# Logger
+from backend.backend.logger import logger
 
 class DatabaseHandler:
     def __init__(self, database_engine: sqlalchemy.create_engine) -> None:
@@ -70,4 +72,3 @@ class DatabaseHandler:
             logger.info("If you have an existing database, you may need to manually update the schema.")
             logger.info("Please refer to the migration documentation for schema updates.")
             raise
-
