@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Header, Footer } from "./components/layout";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,7 +34,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <Header />
+        <div className="min-h-[calc(100vh-200px)]">
+          {children}
+        </div>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -62,14 +67,22 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full text-center px-4">
+        <h1 className="text-6xl font-bold text-gray-900 mb-4">{message}</h1>
+        <p className="text-lg text-gray-600 mb-8">{details}</p>
+        {stack && (
+          <pre className="w-full p-4 overflow-x-auto bg-gray-100 rounded text-left text-sm">
+            <code>{stack}</code>
+          </pre>
+        )}
+        <a
+          href="/"
+          className="inline-block mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Go Home
+        </a>
+      </div>
+    </div>
   );
 }
